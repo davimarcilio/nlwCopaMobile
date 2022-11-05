@@ -20,7 +20,7 @@ export function New() {
         }
         try {
             setIsLoading(true);
-            await api.post('/pools', { title });
+            await api.post('/pools', { title: title.toUpperCase() });
             setTitle('');
             return toast.show({
                 title: 'Bolão criado com sucesso!',
@@ -40,7 +40,9 @@ export function New() {
     }
     return (
         <VStack flex={1} bgColor={'gray.900'}>
-            <Header title="Criar novo bolão" />
+            <Header title="Criar novo bolão" onShare={function (): void {
+                throw new Error("Function not implemented.");
+            }} />
             <VStack mt={8} mx={5} alignItems="center">
                 <Logo />
                 <Heading fontFamily={'heading'} color={'white'} fontSize={'xl'} my={8} textAlign={'center'}>Crie seu próprio bolão da copa e compartilhe entre amigos!</Heading>
